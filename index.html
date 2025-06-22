@@ -4,26 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>GenWeathers</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="src/style.css">
 </head>
 <body>
+    <div class="container">
     <header>
-        <form>
-        <input type="search" placeholder="Enter a city...">
-        <input type="submit" value="Search">
+        <form class="search-form">
+        <input type="search" placeholder="Enter a city..." required class="search-form-input">
+        <input type="submit" value="Search" class="search-form-button">
     </form>
     </header>
+    <main>
+        <div class="weather-app-data">
   <div>
-    <h1>Okinawa Island</h1>
-    <p>
+    <h1 class="weather-app-city">Okinawa Island</h1>
+    <p class="weather-app-details">
         Friday 12:10, scattered clouds
         <br>
-        Humidity: 73%,  Wind: 3.6 km/h
+        Humidity: <strong>73%</strong>,  Wind: <strong>3.6 km/h</strong>
     </p>
 </div>
-        <div>
-            ☀️20°C
+        <div class="main-temperature">
+            <span class="main-temperature-icon">☀️</span>
+            <span class="main-temperature">20 </span>
+            <span class="main-temperature-unit">°C</span>
         </div>
+        </main>
     <footer>
         Coded by 
         <a href="https://github.com/genevieve-exe" target="_blank">Geneviev&eacute; Kibongui</a>
@@ -31,6 +37,7 @@
         <a href="https://github.com/" target="_blank">GitHub</a> 
         & hosted on 
         <a href="https://app.netlify.com/projects/genweathersapp/overview" target="_blank">Netlify</a>.</footer>
-    <script src="script.js"></script>
-</body>
+        <script src="src/script.js"></script>
+</div>
+    </body>
 </html>
