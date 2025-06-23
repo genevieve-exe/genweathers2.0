@@ -2,15 +2,27 @@ function displayWeather(response) {
     let mainTemp = document.querySelector("#main-temperature");
     let temperature = response.data.temperature.current;
     let cityElement = document.querySelector("#weather-app-city");
-    
+    let days = ["Sunday", 
+        "Monday", 
+        "Tuesday", 
+        "Wednesday", 
+        "Thursday", 
+        "Friday", 
+        "Saturday"];
+    let currentTime = document.querySelector("#time");
+    let currentCondition = document.querySelector("#current-condition");
+    let currentHumidity = document.querySelector("#humidity");
+    let currentWind = document.querySelector("#wind");
+    let date = new Date(response.data.time * 1000);
+
     cityElement.innerHTML = response.data.city;
     mainTemp.innerHTML = Math.round(temperature);
+    currentTime.innerHTML = `${days[date.getDay()]} ${date.getHours()}:${date.getMinutes()}`;
+    currentCondition.innerHTML = response.data.condition.description;
+    currentHumidity.innerHTML = response.data.temperature.humidity + `%`;
+    currentWind.innerHTML = response.data.wind.speed + ` km/h`;
+    currentTime.innerHTML = `${time.getHours()} : ${time.getMinutes()}`;
 
-    let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let currentDay = document.querySelector("#current-day");
-    currentDay.innerHTML = days[new Date().getDay()];
-
-    let hour = response.data.time
     console.log(response.data);
 }
 
