@@ -14,6 +14,9 @@ function displayWeather(response) {
     let currentHumidity = document.querySelector("#humidity");
     let currentWind = document.querySelector("#wind");
     let date = new Date(response.data.time * 1000);
+    let icon = document.querySelector("#main-temperature-icon"); 
+    
+    icon.innerHTML = `<img src="${response.data.condition.icon_url}" id="main-temperature-icon">`;
 
     cityElement.innerHTML = response.data.city;
     mainTemp.innerHTML = Math.round(temperature);
