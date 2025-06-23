@@ -75,10 +75,10 @@ footer{
     color: #272044;
     font-size: 13px;
     text-align: center;
-    opacity: 0.4;
+    opacity: 0.65;
     border-top: 1.5px solid #F6F5FA;
     padding-top: 20px;
 }
 footer a {
-    color: palevioletred;
+    color: pink;
 }
