@@ -2,6 +2,10 @@ function displayWeather(response) {
     let mainTemp = document.querySelector("#main-temperature");
     let temperature = response.data.temperature.current;
     let cityElement = document.querySelector("#weather-app-city");
+    let currentTime = document.querySelector("#time");
+    let date = new Date(response.data.time * 1000);
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
     let days = ["Sunday", 
         "Monday", 
         "Tuesday", 
@@ -9,16 +13,7 @@ function displayWeather(response) {
         "Thursday", 
         "Friday", 
         "Saturday"];
-    let date = new Date(response.data.time * 1000);
-    let minutes = date.getMinutes();
-    if (minutes < 10) {
-        minutes = `0${minutes}`;
-    }
-    let hours = date.getHours();
-    if (hours < 10) {
-        hours = `0${hours}`;
-    }
-    let currentTime = document.querySelector("#time");
+    let day = days[date.getDay()];
     let currentCondition = document.querySelector("#current-condition");
     let currentHumidity = document.querySelector("#humidity");
     let currentWind = document.querySelector("#wind");
@@ -28,13 +23,26 @@ function displayWeather(response) {
 
     cityElement.innerHTML = response.data.city;
     mainTemp.innerHTML = Math.round(temperature);
-    currentTime.innerHTML = `${days[date.getDay()]} ${hours}:${minutes}`;
+    currentTime.innerHTML = `${day} ${hours}:${minutes}`;
     currentCondition.innerHTML = response.data.condition.description;
     currentHumidity.innerHTML = response.data.temperature.humidity + `%`;
     currentWind.innerHTML = response.data.wind.speed + ` km/h`;
-    currentTime.innerHTML = `${date.getHours()}:${date.getMinutes()}`;
 
     console.log(response.data);
+}
+
+function formatDate(date) {
+    let hours = date.getHours();
+    let minutes = date.getMinutes();
+    let days = ["Sunday", 
+        "Monday", 
+        "Tuesday", 
+        "Wednesday", 
+        "Thursday", 
+        "Friday", 
+        "Saturday"];
+    let day = days[date.getDay()];
+    return `${day} ${hours}:${minutes}`;
 }
 
 function searchCity(city) {
