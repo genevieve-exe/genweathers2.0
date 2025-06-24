@@ -24,6 +24,9 @@ function displayWeather(response) {
     cityElement.innerHTML = response.data.city;
     mainTemp.innerHTML = Math.round(temperature);
     currentTime.innerHTML = `${day} ${hours}:${minutes}`;
+    if (minutes < 10) {
+        currentTime.innerHTML = `${day} ${hours}:0${minutes}`;
+    }
     currentCondition.innerHTML = response.data.condition.description;
     currentHumidity.innerHTML = response.data.temperature.humidity + `%`;
     currentWind.innerHTML = response.data.wind.speed + ` km/h`;
