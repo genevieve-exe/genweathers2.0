@@ -9,22 +9,30 @@ function displayWeather(response) {
         "Thursday", 
         "Friday", 
         "Saturday"];
+    let date = new Date(response.data.time * 1000);
+    let minutes = date.getMinutes();
+    if (minutes < 10) {
+        minutes = `0${minutes}`;
+    }
+    let hours = date.getHours();
+    if (hours < 10) {
+        hours = `0${hours}`;
+    }
     let currentTime = document.querySelector("#time");
     let currentCondition = document.querySelector("#current-condition");
     let currentHumidity = document.querySelector("#humidity");
     let currentWind = document.querySelector("#wind");
-    let date = new Date(response.data.time * 1000);
     let icon = document.querySelector("#main-temperature-icon"); 
     
-    icon.innerHTML = `<img src="${response.data.condition.icon_url}" id="main-temperature-icon">`;
+    icon.innerHTML = `<img src="${response.data.condition.icon_url}" id="main-temperature-icon" class="main-temperature-icon">`;
 
     cityElement.innerHTML = response.data.city;
     mainTemp.innerHTML = Math.round(temperature);
-    currentTime.innerHTML = `${days[date.getDay()]} ${date.getHours()}:${date.getMinutes()}`;
+    currentTime.innerHTML = `${days[date.getDay()]} ${hours}:${minutes}`;
     currentCondition.innerHTML = response.data.condition.description;
     currentHumidity.innerHTML = response.data.temperature.humidity + `%`;
     currentWind.innerHTML = response.data.wind.speed + ` km/h`;
-    currentTime.innerHTML = `${time.getHours()} : ${time.getMinutes()}`;
+    currentTime.innerHTML = `${date.getHours()}:${date.getMinutes()}`;
 
     console.log(response.data);
 }
